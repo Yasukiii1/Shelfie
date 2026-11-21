@@ -1,3 +1,4 @@
+"""Shelfie desktop window. Uses the always-on background service if it's running,
 otherwise starts the server inside this process."""
 from __future__ import annotations
 

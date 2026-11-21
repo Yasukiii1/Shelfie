@@ -1,3 +1,4 @@
+"""Shelfie HTTP server: JSON API + the web UI used by both the desktop window and the iPhone."""
 from __future__ import annotations
 
 import asyncio

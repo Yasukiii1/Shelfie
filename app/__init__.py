@@ -1,0 +1,1 @@
+"""Shelfie application package."""

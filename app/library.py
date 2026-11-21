@@ -1,3 +1,4 @@
+"""Shelfie library: PDFs on disk + a SQLite index (metadata, tags, full-text search)."""
 from __future__ import annotations
 
 import os

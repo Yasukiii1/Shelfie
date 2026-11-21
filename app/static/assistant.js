@@ -1,3 +1,4 @@
+// Shelfie librarian: right-hand chat panel driven by pi + the local llama.cpp model.
 const X = window.Shelfie;
 const { S, api, icon, esc, catColor, isPhone, store, toast } = X;
 const $ = (s, el = document) => el.querySelector(s);

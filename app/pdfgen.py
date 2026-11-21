@@ -1,3 +1,4 @@
+"""Tiny dependency-free PDF writer for documents the assistant creates.
 
 Understands a small Markdown subset: '# ', '## ', '### ' headings, '- ' / '* ' / '1. ' list
 items, '---' rules, and blank-line separated paragraphs. **bold** markers are stripped.

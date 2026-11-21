@@ -1,3 +1,4 @@
+"""Measured page reconstruction ("layout engine v2").
 
 Vision models are good at reading and bad at geometry, so geometry is measured, not guessed:
   • text lines: OCR boxes, then baseline / letter height / exact left-right ink extent measured from pixels;

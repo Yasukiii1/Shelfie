@@ -1,3 +1,4 @@
+"""Text Lens: make text in a photo easier for the vision model to read.
 
 1. Clean the photo: flatten shadows/uneven light, boost local contrast (CLAHE) on lightness only so
    colours and highlighter survive, and upscale small pages.

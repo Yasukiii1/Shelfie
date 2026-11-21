@@ -1,3 +1,4 @@
+// Shelfie tools for pi. These are the ONLY tools the assistant gets: pi runs with its built-in
 // read/write/edit/bash tools disabled. Every call goes through Shelfie's own API, which only
 // knows about the library folder, so the model can read and create in the library and nowhere
 // else, and there is no delete tool at all.

@@ -1,3 +1,4 @@
+"""Image → PDF reconstruction with the local vision model.
 
 The photo is NEVER embedded. The model redraws each page as SVG: every piece of text becomes a real
 <text> element at its position (highlighted words in bold), lines/boxes/blanks become vector lines and

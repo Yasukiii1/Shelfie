@@ -1,3 +1,4 @@
+"""Bridge between Shelfie and the pi agent (pi --mode rpc) talking to the local llama.cpp server.
 
 pi runs with every built-in tool disabled and only the Shelfie extension loaded, working inside the
 library folder. The bridge keeps a simple transcript per chat and streams changes to connected
