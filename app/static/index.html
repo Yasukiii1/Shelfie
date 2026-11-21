@@ -1,0 +1,173 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shelfie</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Shelfie">
+<meta name="theme-color" content="#F3EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<div id="app" class="app">
+  <aside class="rail" id="rail">
+    <div class="brand">
+      <img class="brand-mark" src="/icons/icon.svg" alt="" aria-hidden="true">
+      <span class="brand-name">Shelfie</span>
+      <span class="brand-sub">private archive</span>
+    </div>
+
+    <nav class="rail-section" id="nav-library"></nav>
+
+    <div class="rail-head">
+      <span>Drawers</span>
+      <button class="icon-btn sm" id="btn-new-drawer" title="New drawer"></button>
+    </div>
+    <nav class="rail-section drawers" id="nav-drawers"></nav>
+
+    <div class="rail-head" id="tags-head"><span>Tags</span></div>
+    <div class="tag-cloud" id="nav-tags"></div>
+
+    <div class="rail-foot">
+      <button class="foot-btn" id="btn-pair"></button>
+      <div class="foot-row">
+        <span class="foot-stats" id="foot-stats"></span>
+        <button class="icon-btn sm" id="btn-theme" title="Theme"></button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="topbar">
+      <button class="search-trigger" id="btn-search">
+        <span class="ico" data-i="search"></span>
+        <span class="search-ph">Search titles, tags and the words inside every PDF…</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+      <div class="seg" id="view-toggle">
+        <button data-view="grid" title="Sheets"></button>
+        <button data-view="list" title="Ledger"></button>
+      </div>
+      <button class="btn ask-btn" id="btn-ask" title="Ask the librarian (Ctrl J)"><span class="ico" data-i="spark"></span><span>Ask</span></button>
+      <button class="btn primary" id="btn-add"><span class="ico" data-i="plus"></span><span>Add PDFs</span></button>
+    </header>
+
+    <section class="shelf" id="shelf">
+      <div class="shelf-head">
+        <div class="eyebrow" id="eyebrow"></div>
+        <h1 class="shelf-title" id="shelf-title">Everything</h1>
+        <div class="shelf-meta" id="shelf-meta"></div>
+        <div class="shelf-tools">
+          <div class="chips" id="mobile-drawers"></div>
+          <label class="sort">
+            <span>Sort</span>
+            <select id="sort">
+              <option value="added">Newest first</option>
+              <option value="title">Title A–Z</option>
+              <option value="opened">Recently read</option>
+              <option value="pages">Most pages</option>
+              <option value="size">Largest</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="docs grid" id="docs"></div>
+    </section>
+  </main>
+
+  <aside class="detail" id="detail" aria-hidden="true"></aside>
+
+  <aside class="assistant" id="assistant" aria-label="Librarian">
+    <div class="as-resize" id="as-resize" title="Drag to resize · double-click to reset"></div>
+    <div class="as-inner">
+      <header class="as-head">
+        <div class="as-title">
+          <span class="as-name">Librarian</span>
+          <span class="as-model"><i class="dot" id="as-dot"></i><span id="as-model">connecting…</span></span>
+        </div>
+        <div class="as-tools">
+          <button class="as-think" id="as-think" title="How much the model thinks before answering"></button>
+          <button class="icon-btn sm" id="as-hist" title="Chat history"></button>
+          <button class="icon-btn sm" id="as-new" title="New chat"></button>
+          <button class="icon-btn sm" id="as-close" title="Close (Ctrl J)"></button>
+        </div>
+      </header>
+      <div class="as-chat-title" id="as-chat-title" hidden></div>
+      <div class="as-history" id="as-history" hidden></div>
+      <div class="as-offline" id="as-offline" hidden></div>
+      <div class="as-log" id="as-log"></div>
+      <form class="as-compose" id="as-form">
+        <div class="as-context" id="as-context" hidden></div>
+        <div class="as-attach" id="as-attach" hidden></div>
+        <div class="as-box">
+          <button type="button" class="as-clip" id="as-clip" title="Photos of pages → real PDF"></button>
+          <textarea id="as-input" rows="1" placeholder="Ask about your PDFs… (paste a photo here)" spellcheck="true"></textarea>
+          <button type="submit" class="as-send" id="as-send" title="Send (Enter)"></button>
+        </div>
+        <div class="as-foot">Reads &amp; creates in your library only · never deletes</div>
+      </form>
+    </div>
+  </aside>
+
+  <nav class="tabbar" id="tabbar">
+    <button data-tab="library"><span class="ico" data-i="library"></span><span>Library</span></button>
+    <button data-tab="search"><span class="ico" data-i="search"></span><span>Search</span></button>
+    <button data-tab="add" class="tab-add"><span class="ico" data-i="plus"></span></button>
+    <button data-tab="ask"><span class="ico" data-i="spark"></span><span>Ask</span></button>
+    <button data-tab="drawers"><span class="ico" data-i="drawer"></span><span>Drawers</span></button>
+  </nav>
+</div>
+
+<input type="file" id="file-input" accept="application/pdf,.pdf,image/*" multiple hidden>
+<input type="file" id="as-file" accept="image/*" multiple hidden>
+
+<div class="overlay" id="drop" hidden>
+  <div class="drop-inner">
+    <div class="drop-title">File it.</div>
+    <div class="drop-sub">Release over a drawer — or anywhere to file into <b id="drop-default">Inbox</b>. Photos of pages are rebuilt as real PDFs.</div>
+    <div class="drop-targets" id="drop-targets"></div>
+  </div>
+</div>
+
+<div class="palette-wrap" id="palette" hidden>
+  <div class="palette" role="dialog" aria-label="Search">
+    <div class="palette-input">
+      <span class="ico" data-i="search"></span>
+      <input id="palette-q" placeholder="Search the archive" autocomplete="off" spellcheck="false">
+      <button class="icon-btn sm" id="palette-close" title="Close"></button>
+    </div>
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<div class="viewer" id="viewer" hidden>
+  <header class="viewer-bar">
+    <button class="icon-btn" id="v-back" title="Close (Esc)"></button>
+    <div class="viewer-title"><span class="tab-dot" id="v-dot"></span><span id="v-title"></span></div>
+    <div class="viewer-tools">
+      <span class="v-page" id="v-page"></span>
+      <button class="icon-btn" id="v-zoomout" title="Zoom out"></button>
+      <button class="icon-btn" id="v-zoomin" title="Zoom in"></button>
+      <button class="icon-btn" id="v-star" title="Star"></button>
+      <button class="icon-btn" id="v-ext" title="Open in system viewer"></button>
+      <button class="icon-btn" id="v-dl" title="Download"></button>
+      <button class="icon-btn" id="v-info" title="Details"></button>
+    </div>
+  </header>
+  <div class="viewer-pages" id="v-pages"></div>
+</div>
+
+<div class="modal-wrap" id="modal" hidden><div class="modal" id="modal-body"></div></div>
+<div class="menu" id="menu" hidden></div>
+<div class="toasts" id="toasts"></div>
+
+<script type="module" src="/app.js"></script>
+<script type="module" src="/assistant.js"></script>
+</body>
+</html>
